@@ -38,4 +38,8 @@ public class PDFReader {
         }
         return null;
     }
+    public String[] stringToArray(String text){
+        String[] arr = text.split("\\W+");
+        return arr;
+    }
 }
