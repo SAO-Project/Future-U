@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(myFileIntent, 10);
     }
 
-    public void
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
