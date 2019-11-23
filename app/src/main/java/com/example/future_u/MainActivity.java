@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(myFileIntent, 10);
     }
 
+    public void
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.i("requestCode", requestCode + "");
         switch (requestCode){
             case 10:
-                if(requestCode == RESULT_OK){
+                if(resultCode == RESULT_OK){
                     String path = data.getData().getPath();
+                    Log.i("path", path);
                     resumePath.setText(path);
                 }
                 break;
