@@ -1,4 +1,4 @@
-package main.java.com.example.future_u;
+package com.example.future_u;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
