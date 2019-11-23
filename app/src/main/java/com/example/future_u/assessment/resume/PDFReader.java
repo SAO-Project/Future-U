@@ -9,7 +9,10 @@ import java.io.IOException;
 
 public class PDFReader {
     AssetManager assetManager;
+    public String[] parse(String pathName){
+        return stringToArray(read(pathName));
 
+    }
     public String read(String pathName){
         String parsedText = null;
         PDDocument document = null;
