@@ -76,14 +76,18 @@ public class PercentageOfClassification {
      */
     public Boolean insertPercentageOfClassifications() {
         try {
-            this.percentageOfClassification.put("solving", this.skills[0] / this.skills.length);
+            Double total = 0.0;
+            for (Double value : this.skills) {
+                total += value;
+            }
+            this.percentageOfClassification.put("solving", this.skills[0] / total);
             this.percentageOfClassification.put(
-                    "communication", this.skills[1] / this.skills.length);
-            this.percentageOfClassification.put("teamwork", this.skills[2] / this.skills.length);
-            this.percentageOfClassification.put("digital", this.skills[3] / this.skills.length);
-            this.percentageOfClassification.put("leadership", this.skills[4] / this.skills.length);
-            this.percentageOfClassification.put("ethics", this.skills[5] / this.skills.length);
-            this.percentageOfClassification.put("management", this.skills[6] / this.skills.length);
+                    "communication", this.skills[1] / total);
+            this.percentageOfClassification.put("teamwork", this.skills[2] / total);
+            this.percentageOfClassification.put("digital", this.skills[3] / total);
+            this.percentageOfClassification.put("leadership", this.skills[4] / total);
+            this.percentageOfClassification.put("ethics", this.skills[5] / total);
+            this.percentageOfClassification.put("management", this.skills[6] / total);
             this.percentageOfClassification.put(
                     "intercultural", this.skills[7] / this.skills.length);
         } catch (Exception e) {
