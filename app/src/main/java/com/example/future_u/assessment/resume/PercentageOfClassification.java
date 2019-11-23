@@ -1,4 +1,4 @@
-package main.java.com.example.future_u.assessment.resume;
+package com.example.future_u.assessment.resume;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 public class PercentageOfClassification {
     final static private HashMap<String, ArrayList<Double>> VectorOfWords =
-            main.java.com.example.future_u.assessment.resume.PercentageOfClassificationUtil.getAllWordsMap();
+            com.example.future_u.assessment.resume.PercentageOfClassificationUtil.getAllWordsMap();
     private HashMap<String, Double> percentageOfClassification;
     private Double[] skills;
     String[] pdf;
