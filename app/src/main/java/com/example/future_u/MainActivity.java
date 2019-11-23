@@ -1,4 +1,4 @@
-package com.example.future_u;
+package main.java.com.example.future_u;
 
 import androidx.appcompat.app.AppCompatActivity;
 
