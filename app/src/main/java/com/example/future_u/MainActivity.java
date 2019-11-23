@@ -3,12 +3,15 @@ package com.example.future_u;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 
 import com.example.future_u.assessment.resume.PDFReader;
 import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.File;
 
+public class MainActivity extends AppCompatActivity {
+    File root;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         PDFBoxResourceLoader.init(getApplicationContext());
 
         PDFReader reader = new PDFReader();
-        reader.read("hello.pdf");
+//        Find the root of the external storage.
+        root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     }
 }
