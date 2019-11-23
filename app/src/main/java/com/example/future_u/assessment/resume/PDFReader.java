@@ -7,16 +7,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class PDFReader{
-    String name;
-// Create instance with file directory
-    public PDFReader(String name){
-        this.name = name;
-    }
-    public String[] read(){
-        //    TODO: remove static pdf pathname
+    /*
+    * This method reads pdf document and strips all of the words into a string
+    *   returns pdf as string
+     */
+    public String read(String pathName){
         try{
 //        loading existing pdf document
-            File file = new File("exampleHere.pdf");
+            File file = new File(pathName);
             PDDocument document = PDDocument.load(file);
 //        instantiate TextStripperClass
             PDFTextStripper pdfStripper = new PDFTextStripper();
@@ -25,17 +23,12 @@ public class PDFReader{
 //        close the document (finish)
             document.close();
 
-            return stringToArray(text);
+            System.out.println(text.substring(0, 10));
+            return text;
         }
         catch(IOException e){
-            System.err.println("Something wrong happened");
+            System.err.println("File cannot be found");
         }
         return null;
-    }
-//    converts large string into array of words
-    public String[] stringToArray(String text){
-//        \\W+ includes different separators in ASCII only
-        String[] tokens = text.split("\\W+");
-        return tokens;
     }
 }

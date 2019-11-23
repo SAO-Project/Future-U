@@ -3,7 +3,8 @@ package com.example.future_u;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import java.io.IOException;
+
+import com.example.future_u.assessment.resume.PDFReader;
 
 public class MainActivity extends AppCompatActivity{
 
