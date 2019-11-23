@@ -34,7 +34,6 @@ public class PercentageOfClassification {
      * corresponding word.
      * @return True if successful, false if an error occurred.
      */
-    //
     public Boolean parsePdf() {
         // Words are subject are to change.
         for (String s : this.pdf) {
