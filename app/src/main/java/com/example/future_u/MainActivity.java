@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.io.File;
 
+import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
+
 public class MainActivity extends AppCompatActivity {
     //Views
     Intent myFileIntent;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //Attributes
     public File resume;
 
-    public void uploadResume(View view){
+    public void uploadResume(View view) {
         Log.i("uploadResume", "STARTED");
         myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
         myFileIntent.setType("*/*");
@@ -41,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.i("requestCode", requestCode + "");
-        switch (requestCode){
+        switch (requestCode) {
             case 10:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     String path = data.getData().getPath();
                     Log.i("path", path);
                     resumePath.setText(path);
