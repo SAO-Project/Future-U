@@ -1,38 +1,33 @@
 package com.example.future_u.assessment;
 
-import java.util.ArrayList;
+import android.util.Log;
+
+import com.example.future_u.assessment.resume.PDFReader;
+import com.example.future_u.assessment.resume.PercentageOfClassification;
 
 public class Assessment {
+    private PercentageOfClassification percentageOfClassification;
     private String path, major;
     private Double gpa;
-    private ArrayList<Question> setOfQuestions = new ArrayList<Question>();
-//    represents the question as string
-    private String[] queries = {"I enjoy meeting new people.", "I like helping people.", "I sometimes make mistakes.", "I'm easily disappointed.", "I enjoy repairing things."};
 
     public Assessment(String path, String major, Double gpa) {
         this.path = path;
         this.major = major;
         this.gpa = gpa;
-        buildSetOfQuestions();
+        this.percentageOfClassification = new PercentageOfClassification();
+        runResumeScan();
     }
 
-    public void buildSetOfQuestions(){
-        for(String query : queries){
-            Question question = new Question(query);
-            setOfQuestions.add(question);
+    private void runResumeScan() {
+        PDFReader pdfReader = new PDFReader();
+        String[] words = pdfReader.parse(this.path);
+
+        if (this.percentageOfClassification.runAll(words)) {
+            Log.i("percentageOfClass...", "Ran Successful");
         }
     }
 
-    public ArrayList<Question> getSetOfQuestions(){
-        return this.setOfQuestions;
+    public PercentageOfClassification getPercentageOfClassification() {
+        return this.percentageOfClassification;
     }
-
-    public double getGpa(){
-        return this.gpa;
-    }
-
-    public String getMajor(){
-        return this.major;
-    }
-
 }

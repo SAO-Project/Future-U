@@ -3,6 +3,8 @@ package com.example.future_u.assessment.resume;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,39 +19,42 @@ import java.util.HashMap;
  *
  */
 
-class PercentageOfClassificationUtil {
+public class PercentageOfClassificationUtil {
+    final static private String EDDIE_PATH = "/Users/greywind/Desktop/Hello/hello/app/src/main/java/com/example/future_u/assessment/resume/glove.6B.50d.txt";
 
     /**
      * Reads through 'glove.6b.50d.txt', file contains more than 40,000 words in the english
      * language. With each word mapped to a vector.
      * This method builds a HashMap with the word as the key and its corresponding vector as the
      * value.
-     * @return HashMap of String to ArrayList<Double>. The
+     * @return HashMap of String to ArrayList<Double>.
+     * Method Has been tested works.
      */
-    static HashMap<String, ArrayList<Double>> getAllWordsMap() {
+    public static HashMap<String, ArrayList<Double>> getAllWordsMap() {
         HashMap<String, ArrayList<Double>> vectorOfWord = new HashMap<>();
 
         // Fastest way to read through a file.
         BufferedReader reader;
 
         try {
-            reader = new BufferedReader(new FileReader("glove.6B.50d.txt"));
+            reader = new BufferedReader(
+                    new FileReader(EDDIE_PATH));
             String line = reader.readLine();
 
             while (line != null) {
-                System.out.println(line);
                 String[] splitLine = line.split(" ");
 
                 // Will put the word as the key, then call 'getVectorList' which returns an
                 // ArrayList of doubles or vectors to 'splitLine[0]'.
-                vectorOfWord.put(splitLine[0], getVectorList(
-                        Arrays.copyOfRange(splitLine, 1, splitLine.length-1)));
+                ArrayList<Double> doubles = getVectorList(Arrays.copyOfRange(splitLine, 1, splitLine.length-1));
+                vectorOfWord.put(splitLine[0], doubles);
 
                 line = reader.readLine();
             }
         } catch (IOException e) {
             System.out.println(e.toString() + "\n Failed to read words.");
         }
+
         return vectorOfWord;
     }
 
@@ -94,14 +99,18 @@ class PercentageOfClassificationUtil {
             exception.printStackTrace();
         }
 
-        double productOfVector = 0.0;
+        Double dotProduct = 0.0;
+        Double sumOfVector1 = 0.0;
+        Double sumOfVector2 = 0.0;
 
         // Just to be safe.
         assert word1Vectors != null;
         assert word2Vectors != null;
         for (int i = 0; i < word1Vectors.size(); i++) {
-            productOfVector += (word1Vectors.get(i) * word2Vectors.get(i));
+            sumOfVector1 += (word1Vectors.get(i) * word1Vectors.get(i));
+            sumOfVector2 += (word2Vectors.get(i) * word2Vectors.get(i));
+            dotProduct += (word1Vectors.get(i) * word2Vectors.get(i));
         }
-        return productOfVector / (Math.sqrt(productOfVector) * Math.sqrt(productOfVector));
+        return dotProduct / (Math.sqrt(sumOfVector1) * Math.sqrt(sumOfVector2));
     }
 }
