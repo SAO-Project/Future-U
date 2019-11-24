@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Should only be initiated once.
  */
 public class PercentageOfClassification {
-    final static private HashMap<String, ArrayList<Double>> VectorOfWords =
+    final private HashMap<String, ArrayList<Double>> VectorOfWords =
             com.example.future_u.assessment.resume.PercentageOfClassificationUtil.getAllWordsMap();
     private HashMap<String, Double> percentageOfClassification;
     private Double[] skills;
