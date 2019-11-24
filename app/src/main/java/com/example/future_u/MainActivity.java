@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.future_u.assessment.resume.PDFReader;
+
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
         myFileIntent.setType("*/*");
         startActivityForResult(myFileIntent, 10);
+
     }
 
     @Override
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
                     String path = data.getData().getPath();
                     Log.i("path", path);
                     resumePath.setText(path);
+                    PDFReader reader = new PDFReader();
+                    String[] words = reader.parse(path);
+
                 }
                 break;
         }
