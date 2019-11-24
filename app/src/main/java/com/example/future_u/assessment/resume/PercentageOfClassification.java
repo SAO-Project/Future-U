@@ -18,12 +18,28 @@ public class PercentageOfClassification {
     public PercentageOfClassification() {
         this.percentageOfClassification = new HashMap<>();
         this.skills = new Double[8];
+        this.skills[0] = 0.0;
+        this.skills[1] = 0.0;
+        this.skills[2] = 0.0;
+        this.skills[3] = 0.0;
+        this.skills[4] = 0.0;
+        this.skills[5] = 0.0;
+        this.skills[6] = 0.0;
+        this.skills[7] = 0.0;
     }
 
     public PercentageOfClassification(String[] pdf) {
         this.percentageOfClassification = new HashMap<>();
         this.skills = new Double[8];
         this.pdf = pdf;
+        this.skills[0] = 0.0;
+        this.skills[1] = 0.0;
+        this.skills[2] = 0.0;
+        this.skills[3] = 0.0;
+        this.skills[4] = 0.0;
+        this.skills[5] = 0.0;
+        this.skills[6] = 0.0;
+        this.skills[7] = 0.0;
     }
 
     public Boolean parsePdf(String[] newPdf) {
@@ -37,8 +53,12 @@ public class PercentageOfClassification {
      * @return True if successful, false if an error occurred.
      */
     public Boolean parsePdf() {
+        System.out.println(this.VectorOfWords.size());
         // Words are subject are to change.
         for (String s : this.pdf) {
+            if (this.skills[0] == null) {
+                System.out.println("Eddiedfjaslfja");
+            }
             try {
                 this.skills[0] += PercentageOfClassificationUtil.sim(
                         s, "solving", VectorOfWords);
@@ -92,11 +112,15 @@ public class PercentageOfClassification {
             this.percentageOfClassification.put(
                     "intercultural", this.skills[7] / this.skills.length);
         } catch (Exception e) {
-            Log.i("InsertPercentageOfClass")
             e.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    // Testing purposes only.
+    public HashMap<String, ArrayList<Double>> getVectorOfWords(){
+        return VectorOfWords;
     }
 
     public HashMap<String, Double> getPercentageOfClassification() {
