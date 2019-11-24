@@ -1,5 +1,7 @@
 package com.example.future_u.assessment.resume;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -90,6 +92,7 @@ public class PercentageOfClassification {
             this.percentageOfClassification.put(
                     "intercultural", this.skills[7] / this.skills.length);
         } catch (Exception e) {
+            Log.i("InsertPercentageOfClass")
             e.printStackTrace();
             return false;
         }
