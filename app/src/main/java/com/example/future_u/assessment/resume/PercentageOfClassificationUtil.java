@@ -3,6 +3,8 @@ package com.example.future_u.assessment.resume;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,6 +20,7 @@ import java.util.HashMap;
  */
 
 public class PercentageOfClassificationUtil {
+    final static private String EDDIE_PATH = "/Users/greywind/Desktop/Hello/hello/app/src/main/java/com/example/future_u/assessment/resume/glove.6B.50d.txt";
 
     /**
      * Reads through 'glove.6b.50d.txt', file contains more than 40,000 words in the english
@@ -27,7 +30,7 @@ public class PercentageOfClassificationUtil {
      * @return HashMap of String to ArrayList<Double>.
      * Method Has been tested works.
      */
-    static HashMap<String, ArrayList<Double>> getAllWordsMap() {
+    public static HashMap<String, ArrayList<Double>> getAllWordsMap() {
         HashMap<String, ArrayList<Double>> vectorOfWord = new HashMap<>();
 
         // Fastest way to read through a file.
@@ -35,7 +38,7 @@ public class PercentageOfClassificationUtil {
 
         try {
             reader = new BufferedReader(
-                    new FileReader("/Users/greywind/Desktop/Hello/hello/app/src/main/java/com/example/future_u/assessment/resume/glove.6B.50d.txt"));
+                    new FileReader(EDDIE_PATH));
             String line = reader.readLine();
 
             while (line != null) {
