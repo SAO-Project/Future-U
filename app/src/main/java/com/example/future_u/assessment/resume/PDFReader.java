@@ -25,7 +25,7 @@ public class PDFReader {
         PDDocument document = new PDDocument();
         try {
 //            loads document
-            Log.i("path", pathName);
+            // Log.i("path", pathName);
             document = PDDocument.load(new File(pathName));
         } catch(IOException e) {
             Log.e("PdfBox-Android-Sample", "Exception thrown while loading document to strip", e);

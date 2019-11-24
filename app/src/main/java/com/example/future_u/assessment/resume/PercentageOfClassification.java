@@ -126,4 +126,20 @@ public class PercentageOfClassification {
     public HashMap<String, Double> getPercentageOfClassification() {
         return this.percentageOfClassification;
     }
+
+    public Boolean runAll(String[] pdf){
+        System.out.println("RUN ALL");
+        if (!parsePdf(pdf)) {
+            System.out.println("PDF DID NOT WORK.");
+            Log.i("parsePDF", "Parse PDF Failed");
+            return false;
+        }
+        if (!insertPercentageOfClassifications()) {
+            System.out.println("Inserting did not WORK!!!!!!");
+            Log.i(
+                    "insertPercentageOf...", "Inserting into hashtable failed. ");
+            return false;
+        }
+        return true;
+    }
 }
